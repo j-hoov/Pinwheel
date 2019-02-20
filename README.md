@@ -1,9 +1,11 @@
-# Fourth Sketch - Dynamic Arrays
+# Fifth Sketch - Dynamic Arrays (Colorized 2019)
 ------
-##### First Attempt
+##### Version 2.0
 
-![sketch](images/sketch4_1.png?raw=true "sketch")
-![sketch](images/sketch4_2.png?raw=true "sketch")
+![screen](images/screen1.png?raw=true "screen")
+![segments](images/segments.png?raw=true "segments")
+![beziers](images/beziers.png?raw=true "beziers")
 
+Second Iteration. Array of point-to-point lines replaced by dynamic points on an invisible rectangle. Translate the rectangle to the center and make it rotate. Begin to add segments, segment length and distance between them determined by the variable dimensions of the unseen rectangle. Toggle between line segments and bezier curves. Move the mouse across the width of the screen and watch it spin faster, watch it spin slower. Move the mouse along the height of the screen and watch the colors transform. Watch the segments expand and contract - make a spinning radar, a pinwheel, a flower, a static line. 
 
-I tried to incorporate effective dynamic arrays into this sketch, along with boolean statements and some keypress and mouse position interactions. It was challenging to work out the code for these components, so I did not spend as long committing to the aesthetics of the piece. However, this sketch helped me grasp the mechanics of these components, and hopefully this sketch will continue to evolve. It consists of two shapes, each made of an array of line segments. movement of these shape-arrays is dependent on the X position of the mouse. The number of segments can be manipulated by the left-right arrow keys, and the weight of the line stroke can be changed with the up-down arrow keys. A mouse press changes the stroke color. My favorite part of this piece may be the alpha blended background and the feeling of motion it creates. Looking forward to experimenting more ~ 
+I love the morphing geometry of this sketch. I got the idea of using invisible shapes from classmates' sketches, and from there, the sketch continued to grow. By introducing flexibility and customizability into several variables and parameters, the possiblities are nearly endless. The smooth spectrum of rotation speed and color lends the piece a feeling of fluidity, while the calculated segment and bezier shapes and the unmoving axis allude to more mechanical processes. By finding just the right speed and dimensions, you can create a static object out of high-speed motion, which may be my favorite part of this sketch. Overall, I am happy with this piece, and it also provided an opportunity to experiment with dynamic arrays, object classes, alpha blended backgrounds, keypress interactions, and transformations.
