@@ -1,14 +1,13 @@
 //declare variables
-let rx;
-let ry;
-let rw;
-let rh;
+let rx; //rect x coordinate
+let ry; //rect y coordinate
+let rw; //rect width
+let rh; //rect height 
 let num_seg;
 let shape = [];
 let bez_shape = [];
 let rotate_speed;
-let shape_code;
-let stroke_code;
+let shape_code; //segment or bezier
 
 function setup(){
   rx = 0;
@@ -16,34 +15,9 @@ function setup(){
   rw = 100;
   rh = 100;
   num_seg = 1;
-  shape_code = 0;
-  stroke_code = 2;
+  shape_code = 0; //default object displayed is Seg
   createCanvas(windowWidth, windowHeight);  
 }
-
-
-// //keypress interaction
-// function keyPressed(){
-//   if (keyIsDown(70)){
-//     num_seg -= 1;
-//   }
-//   if (keyIsDown(74)){
-//     num_seg += 1;
-//   }
-//   if (keyIsDown(RIGHT_ARROW)){
-//       rw += 10;
-//   }
-//   if (keyIsDown(LEFT_ARROW)){
-//       rw -= 10;
-//   }
-//   if (keyIsDown(UP_ARROW)){
-//     rh += 10;
-//   }
-//   if (keyIsDown(DOWN_ARROW)){
-//     rh -= 10;
-//   }
-// }
-
 
 function draw(){
 //info button
@@ -57,11 +31,11 @@ textAlign(CENTER,CENTER);
 textSize(20);
 text("?",20,20);
 
-//info text
+//info text to display when mouse hovers over question mark circle
 let d = dist(mouseX,mouseY,20,20);
 if(d < 30){
   textAlign(LEFT);
-  textSize(15 );
+  textSize(15);
   noStroke();
   text("move mouse horizontally: change rotation speed",10,50);
   text("move mouse vertically: change color",10,70);
@@ -89,10 +63,10 @@ if(frameCount % 5 == 0){ //if key is held for more than 5 frames
     num_seg += 1;
   }
   if (keyIsDown(RIGHT_ARROW)){
-      rw += 10;
+    rw += 10;
   }
   if (keyIsDown(LEFT_ARROW)){
-      rw -= 10;
+    rw -= 10;
   }
   if (keyIsDown(UP_ARROW)){
     rh += 10;
@@ -102,7 +76,7 @@ if(frameCount % 5 == 0){ //if key is held for more than 5 frames
   }
 }
   
-//invisible rectangle frame shape
+//invisible rectangle 
   noStroke();
   noFill();
  
@@ -120,7 +94,7 @@ if(frameCount % 5 == 0){ //if key is held for more than 5 frames
     bez_shape[i] = new Bez(this.x1,this.y1,this.x2,this.y2,this.x3,this.y3,this.x4,this.y4);
   }
 
-//display Seg or Bez depending on keycode
+//decide whether to display Seg or Bez depending on keycode "S" or "B"
   if(keyCode == 83){
     shape_code = 0;
   }
@@ -149,23 +123,16 @@ if(frameCount % 5 == 0){ //if key is held for more than 5 frames
       this.stroke = 5;
     }  
   
+  //display Seg objects
     display(){
-      stroke(100,this.shade,300); //varying color
+      stroke(100,this.shade,300); //color based on varying green value
       strokeWeight(this.stroke);
-
-      // if(keyCode>47 && keyCode<58){
-      //   this.stroke = map(keyCode,48,57,1,30);
-      //   //strokeWeight(keyCode);
-      // }
-      // else{
-      //   strokeWeight(this.stroke);
-      // }
-     
       line(this.x1, this.y1, this.x2, this.y2, this.shade, this.stroke);
     }
 
   }
 
+//establish Bez class - dimensions based on rectangle
   class Bez{
     constructor(){
       this.x1 = rx;
@@ -180,8 +147,9 @@ if(frameCount % 5 == 0){ //if key is held for more than 5 frames
       this.stroke = 2;
     }
 
+  //display Bez objects
     display(){
-      stroke(this.shade,210,150); //varying color
+      stroke(this.shade,210,150); //color based on varying red value
       strokeWeight(this.stroke);
       bezier(this.x1, this.y1, this.x2, this.y2, this.x3, this.y3, this.x4, this.y4, this.shade, this.stroke);
     }
